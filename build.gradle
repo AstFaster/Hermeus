@@ -1,0 +1,37 @@
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+
+    group = 'fr.astfaster'
+    version = '1.0.0'
+
+    java {
+        withSourcesJar()
+
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(18)
+        }
+    }
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_18
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(Javadoc) {
+        options.encoding = 'UTF-8'
+    }
+
+    jar {
+        manifest {
+            attributes 'Specific-Version': project.version
+            attributes 'Implementation-Version': "${ project.version }-${ commitSha }-${ buildNumber }"
+        }
+    }
+
+}

@@ -1,0 +1,4 @@
+rootProject.name = 'Hermeus'
+include 'api'
+include 'core'
+

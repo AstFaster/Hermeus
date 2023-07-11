@@ -1,0 +1,39 @@
+archivesBaseName = 'Hermeus-API'
+
+java {
+    withJavadocJar()
+}
+
+dependencies {
+    api 'org.jetbrains:annotations:24.0.1'
+    api 'io.netty:netty-all:4.1.94.Final'
+    api 'com.google.code.gson:gson:2.10.1'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            pom {
+                groupId = project.group
+                artifactId = 'hermeus-api'
+                version = project.version
+                name = 'Hermeus-API'
+                description = 'The API of Hermeus, an easy HTTP servers library'
+                url = 'https://github.com/AstFaster/Hermeus'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            credentials {
+                username System.getenv('GITHUB_USERNAME')
+                password System.getenv('GITHUB_TOKEN')
+            }
+            name = "Hermeus_maven"
+            url = "https://maven.pkg.github.com/AstFaster/Hermeus"
+        }
+    }
+}

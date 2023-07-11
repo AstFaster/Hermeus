@@ -1,0 +1,35 @@
+archivesBaseName = 'Hermeus-Core'
+
+dependencies {
+    api project(":api")
+    api 'org.apache.logging.log4j:log4j-core:2.20.0'
+    api 'com.lmax:disruptor:3.4.4'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            pom {
+                groupId = project.group
+                artifactId = 'hermeus-core'
+                version = project.version
+                name = 'Hermeus-Core'
+                description = "The API's implementation of Hermeus, an easy HTTP servers library"
+                url = 'https://github.com/AstFaster/Hermeus'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            credentials {
+                username System.getenv('GITHUB_USERNAME')
+                password System.getenv('GITHUB_TOKEN')
+            }
+            name = "Hermeus_maven"
+            url = "https://maven.pkg.github.com/AstFaster/Hermeus"
+        }
+    }
+}
