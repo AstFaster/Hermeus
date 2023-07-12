@@ -119,7 +119,6 @@ class HermeusRouterImpl implements HermeusRouter {
         return result;
     }
 
-
     @Override
     public @NotNull HermeusRouter subRouter(@NotNull String path) {
         path = path.toLowerCase(Locale.ROOT);

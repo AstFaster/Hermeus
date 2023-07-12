@@ -2,6 +2,8 @@ package fr.astfaster.hermeus.core.server;
 
 import com.google.gson.Gson;
 import fr.astfaster.hermeus.api.Hermeus;
+import fr.astfaster.hermeus.api.server.HermeusMiddleware;
+import fr.astfaster.hermeus.api.server.HermeusRequest;
 import fr.astfaster.hermeus.api.server.HermeusResponse;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
